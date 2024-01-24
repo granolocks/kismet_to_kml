@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+
+require 'kismet_to_kml'
+
+
+prog = File.basename(__FILE__)
+
+options = {}
+option_parser = OptionParser.new do |opts|
+  opts.banner = "Usage: #{prog} [options]"
+
+  opts.on("-n", "--netxml NETXML", "Netxml file (required)") do |v|
+    options[:netxml] = v
+  end
+
+  opts.on("-g", "--gpsxml GPSXML", "Gpsxml file (required)") do |v| options[:gpsxml] = v
+  end
+
+  opts.on("-o", "--output OUTPUT", "Output kml file (required)") do |v|
+    options[:output] = v
+  end
+end
+
+option_parser.parse!
+ 
+if !(options[:netxml] && options[:gpsxml] && options[:output])
+  puts option_parser.help
+  exit 1
+end
+
+KismetToKml.run!(options[:gpsxml], options[:netxml], options[:output])
+
