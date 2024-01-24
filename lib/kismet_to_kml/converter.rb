@@ -43,7 +43,7 @@ module KismetToKml
         next if node_has_useless_bssid(node)
         next if node_is_data_type(node)
         next if node_is_probe_response(node)
-        next if not node_has_bssid(node)
+        next unless node_has_bssid(node)
 
         wifi_network = WifiNetwork.new(node)
         wifi_networks[wifi_network.bssid] = wifi_network
