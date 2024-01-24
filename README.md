@@ -1,5 +1,7 @@
 # `kismet_to_kml` gem
 
+[![Gem Version](https://badge.fury.io/rb/kismet_to_kml.svg)](https://badge.fury.io/rb/kismet_to_kml)
+
 Install via rubygems like `gem install kismet_to_kml`.
 
 ### Usage
